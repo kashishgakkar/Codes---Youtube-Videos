@@ -1,0 +1,14 @@
+import os
+from PyPDF2 import PdfFileMerger, PdfFileReader
+mergedObject = PdfFileMerger()
+items = os.listdir(r'E:/Youtube/Test/images/')
+for pdfitem in items:
+    print(pdfitem)
+    if pdfitem.split('.')[1] == 'pdf':
+        mergedObject.append(PdfFileReader(r'E:/Youtube/Test/images/' + pdfitem, 'rb'))
+# Write all the files into a file
+mergedObject.write(r'E:/Youtube/Test/images/mergedfilesoutput.pdf')
+
+
+pip install os
+pip install pyPDF2
