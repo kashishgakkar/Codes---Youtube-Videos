@@ -1,0 +1,9 @@
+import os
+from PIL import Image
+items = os.listdir(r'E:/Youtube/Test/images/')
+for item in items:
+    image1 = Image.open(r'E:/Youtube/Test/images/' + item)
+    im1 = image1.convert('RGB')
+    print(item)
+    print(item.split('.')[0])
+    im1.save(r'E:/Youtube/Test/images/' + item.split('.')[0] + '.pdf')
