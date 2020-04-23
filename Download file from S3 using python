@@ -1,0 +1,10 @@
+# Download files from AWS S3
+import boto3
+
+path = 'E:/Youtube/Test/'
+s3 = boto3.client('s3')
+s3.download_file('kashishtest', 'Dummy.csv', path + 'test.csv')
+s3.download_file('kashishtest', 'cities.parquet', 'E:/Youtube/Test/test1.parquet')
+
+#Syntax to use download_file function:
+#s3.download_file('bucketname', 'file to download from s3', 'filename in target')
