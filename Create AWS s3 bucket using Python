@@ -1,0 +1,26 @@
+import boto3
+from botocore.client import ClientError
+
+aws_s3_client = boto3.client('s3',
+          aws_access_key_id = '<your-access-key-id>',
+          aws_secret_access_key = '<your-secret-access-key>')
+          
+bucket_name = 'python-learning1'
+try:
+    aws_s3_client.head_bucket(Bucket=bucket_name)
+    bucket_exist = 'Yes'
+except ClientError:
+    bucket_exist = 'No'
+    print("The bucket does not exist or you have no access.")
+    
+if bucket_exist == 'No':
+    try:
+        location = {'LocationConstraint': 'us-west-1'}
+        aws_s3_client.create_bucket(Bucket=bucket_name,
+                                    CreateBucketConfiguration=location)
+        print(f"\n{bucket_name} bucket has been created on AWS S3")
+    except ClientError as e:
+        print(e)
+        print(f"{bucket_name} cannot be created on s3")
+    except:
+        print(f"{bucket_name} cannot be created on s3")
