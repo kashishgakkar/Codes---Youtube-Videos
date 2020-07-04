@@ -1,0 +1,9 @@
+!pip install --user boto3       # to install boto3 library if not already installed
+
+import boto3
+
+s3client = boto3.client('s3',
+          aws_access_key_id = '<your-access-key-id>',
+          aws_secret_access_key = '<your-secret-access-key>')
+                
+print(s3client)
